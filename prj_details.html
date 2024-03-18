@@ -1,0 +1,285 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}portfolio{% endblock %}
+
+{% block content %}
+<section class="banner_area">
+    <div class="box_1620">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>All Projects</h2>
+                    <div class="page_link">
+                        <a href="{% url 'home' %}">Home</a>
+                        <a href="{% url 'ProjectList' %}">{{ project.MainTitle }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% if project.MainTitle %}
+<section class="profile_area">
+    <div class="container">
+        <div class="profile_inner p_rem">
+            <div class="row">
+                <div class="text-center rounded mx-auto">
+                    <h1>{{ project.MainTitle }}</h1>
+                </div>
+                {% if project.MainTitleSummery %}
+                <div class="m-auto col-lg-12">
+                    <p class="text-center">{{ project.MainTitleSummery }}</p>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% if project.img2 %}
+<section class="profile_area">
+    <div class="container">
+        <div class="profile_inner p_rem">
+            <div class="row">
+                <div class="text-center rounded mx-auto">
+                    {% if project.Img2Title %}
+                    <h1>{{ project.Img2Title }}</h1>
+                    {% endif %}
+                    <img class="img-fluid rounded-1" style="border-radius: 1.3rem;  " src="{{ project.img2 }}" alt="">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+    {% if project.img2Text %}
+    <section class="welcome_area p-4 ">
+        <div class="container">
+            <div class="row welcome_inner">
+                <div class="m-auto col-lg-12">
+
+                    <p class="text-center">{{ project.img2Text }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+{% endif %}
+
+
+{% if project.WhatIsAboutThisProject %}
+    {% if project.technologieslist %}
+    <section class="welcome_area p_70">
+        <div class="container">
+            <div class="row welcome_inner">
+                <div class="col-lg-6">
+                    <div class="welcome_text">
+                        <h4>What is about this project</h4>
+                        <p>{{ project.WhatIsAboutThisProject }}</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="">
+                        <div class="container text-center">
+                            <h2 class="m-2">Tech Stack</h2>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <ul class="list-group " style="border: none !important;">
+                                        <div class="row">
+                                            {% for i in project.technologieslist %}
+                                            <h1></h1>
+                                            <li class="list-group-item d-flex border-0 align-items-center text-center col-sm-6">
+                                                <span class="fa fa-circle mx-2" style="font-size: 8px;"></span>
+                                                {{ i }}
+                                            </li>
+                                            {% endfor %}
+                                        </div>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    {% else %}
+
+    <section class="welcome_area p-4 ">
+        <div class="container">
+            <div class="row ">
+                <div class="m-auto text-center col-lg-12">
+                    <h2>What is about this project </h2>
+                    <p>{{ project.WhatIsAboutThisProject }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% endif %}
+
+{% endif %}
+
+{% comment %}
+{% if project.SmallDiscription %}
+<section class="welcome_area p-4 ">
+    <div class="container">
+        <div class="row ">
+            <div class="m-auto text-center col-lg-12">
+                <h2>Small Summary</h2>
+                <p>{{ project.SmallDiscription }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endcomment %}
+
+
+{% if project.img3 %}
+    <section class="profile_area">
+        <div class="container">
+            <div class="profile_inner p_rem">
+                <div class="row">
+                    <div class="text-center rounded mx-auto">
+                        {% if project.Img3Title %}
+                        <h1>{{ project.Img3Title }}</h1>
+                        {% endif %}
+                        <img class="img-fluid rounded-1" style="border-radius: 1.3rem;  " src="{{ project.img3 }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% if project.img3Text %}
+    <section class="welcome_area p-4 ">
+        <div class="container">
+            <div class="row welcome_inner">
+                <div class="m-auto col-lg-12">
+
+                    <p class="text-center">{{ project.img3Text }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+{% endif %}
+
+{% if project.Challanges %}
+    <section class="welcome_area p_70">
+        <div class="container">
+            <div class="row welcome_inner">
+                <div class="m-auto col-lg-7">
+                    {% if project.ChallangesTitle %}
+
+                    <h2 class="text-center">{{ project.ChallangesTitle }}</h2>
+                    {% endif %}
+                    <p class="text-center ">{{project.Challanges}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+
+<section class="profile_area">
+    <div class="container">
+        <div class="profile_inner p_rem">
+            <div class="row">
+                <div style="padding-bottom: 2rem; " class="m-auto"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% if project.Solution %}
+    <section class="welcome_area p_70">
+        <div class="container">
+            <div class="row welcome_inner">
+                <div class="m-auto col-lg-7">
+                    <h2 class="text-center">How we have solved that</h2>
+                    <p class="text-center">{{ project.Solution }}</p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+
+{% if project.github %}
+    <section class="welcome_area p-4 ">
+        <div class="container">
+            <div class="row ">
+                <div class="m-auto text-center col-lg-12">
+                    <h2>Git hub Link :</h2>
+                    <a href="{{ project.github }}" class="col-lg-4" target="_blank">{{ project.github }}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+{% if project.Conclusion %}
+    <section class="welcome_area p_70">
+        <div class="container">
+            <div class="row welcome_inner">
+                <div class="m-auto col-lg-7">
+                    <h2 class="text-center">In Conclusion</h2>
+                    <p class="text-center">{{ project.Conclusion }}</p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+{% if project.more_projects %}
+    <section class="welcome_area p_70">
+        <div class="container">
+            <div class="row welcome_inner">
+                <div class="m-auto col-lg-7">
+                    <h2>Please Have a look at the more projects</h2>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="blog_area single-post-area p_120">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 posts-list">
+                    <div class="single-post row">
+                        
+                        {% for i in project.more_projects %}
+                        <div class="col-lg-6">
+                            <a href="{{ i.slug }}" target="_blank">
+                                <h3>{{ i.title }}</h3>
+                                <div class="quotes">
+                                    {{ i.SmallDiscription }}
+                                </div>
+                            </a>
+
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endif %}
+
+{% endblock %}
